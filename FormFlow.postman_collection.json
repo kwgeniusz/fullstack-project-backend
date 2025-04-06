@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "b8f9e3d1-5f3a-4b2c-8f3a-1b2c3d4e5f6a",
+		"name": "FormFlow API",
+		"description": "API para el manejo de formularios de FormFlow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Submission",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Juan Pérez\",\n    \"email\": \"juan@ejemplo.com\",\n    \"mensaje\": \"Este es un mensaje de prueba para verificar la API\",\n    \"tipo_comprobante\": \"Factura\",\n    \"metodo_pago\": \"Efectivo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/submissions",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["api", "submissions"]
+				},
+				"description": "Crear un nuevo registro de formulario"
+			}
+		},
+		{
+			"name": "Crear Submission con Comprobante",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "María García",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "maria@ejemplo.com",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "Este es un mensaje de prueba con comprobante adjunto",
+							"type": "text"
+						},
+						{
+							"key": "tipo_comprobante",
+							"value": "Factura",
+							"type": "text"
+						},
+						{
+							"key": "metodo_pago",
+							"value": "Transferencia",
+							"type": "text"
+						},
+						{
+							"key": "comprobante_pago",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/submissions",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["api", "submissions"]
+				},
+				"description": "Crear un nuevo registro de formulario con comprobante de pago"
+			}
+		},
+		{
+			"name": "Obtener Submissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/submissions",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["api", "submissions"]
+				},
+				"description": "Obtener todos los registros de formularios"
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	]
+}
